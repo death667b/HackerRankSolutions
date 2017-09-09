@@ -1,9 +1,14 @@
-const input = `3
+// expected output 4
+const input1 = `3
 5 8 14
 4 9`;
-// expected output 4
 
-processData(input);
+// expected output 69
+const input2 = `5
+38 50 60 30 48
+23 69`
+
+processData(input2);
 function processData(input) {
     let [N, A, P] = input.split('\n');
     let test = 0, foundM = -1;
