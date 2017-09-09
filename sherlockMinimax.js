@@ -8,26 +8,27 @@ const input2 = `5
 38 50 60 30 48
 23 69`
 
-processData(input2);
+processData(input1);
 function processData(input) {
     let [N, A, P] = input.split('\n');
-    let test = 0, foundM = -1;
+    let test = [], foundM = 0, maxN = 0, testN = 0;
     N = parseInt(N);
     A = A.split(' ').map( (a) => { return parseInt(a); });
     [P, Q] = P.split(' ').map( (p) => { return parseInt(p); });
 
     for (let M = P; M <= Q; M++) {
-        for (let i = 0; i < 3; i++) {
-            test = Math.min(Math.abs(A[i] - M), i+1);
-            if (test <= 0 || test > N) { 
-                foundM = -1;
-                break;
-            }
-            foundM = M;
-            //console.log('M: ', M, ' Algo: ', test);
-            
+        test = [];
+        for (let i = 0; i < N; i++) {
+            test.push(Math.abs(A[i] - M));
         }
-        //console.log(' ');
-        if (foundM > 0) return console.log(foundM);
+        testN = Math.min(...test);
+        //console.log('M:', M, ' test:', testN);
+        if (maxN < testN) {
+            maxN = testN;
+            foundM = M;
+        }
     }
+
+    //console.log('maxN:', maxN, ' foundM:', foundM);
+    console.log(foundM);
 } 
