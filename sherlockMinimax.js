@@ -27,7 +27,7 @@ const input4 = `4
 2 12`
 
 // bruteForceMethod(input4);
-alternate(input1);
+alternate(input4);
 
 
 function bruteForceMethod(input) {
@@ -94,7 +94,7 @@ function alternate(input) {
         // console.log('P:', P, ' Q', Q);
         // console.log('Starting ans:', ans, 'Starting num:', num);
         for (let i = 0; i < N-1; i++) {
-            cur = (A[i] + A[i+1]) / 2;
+            cur = Math.floor((A[i] + A[i+1]) / 2);
 
             if (cur <= Q && cur >= P && (cur - A[i]) > ans) {
                 ans = cur - A[i];
