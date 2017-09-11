@@ -32,11 +32,11 @@ alternate(input3);
 function alternate(input) {
     // Setup
     let [N, A, P] = input.split('\n');
-    let test = [], foundM = 0, maxN = 0, testN = 0, num = 0;
     N = parseInt(N);
     A = A.split(' ').map( (a) => { return parseInt(a); });
     A.sort( (a,b) => a-b);
     [P, Q] = P.split(' ').map( (p) => { return parseInt(p); });
+    let ans = -1, num = -1, cur = -1;
 
     // Find edge cases and report if found
     if(A[0] > Q) {
@@ -45,8 +45,6 @@ function alternate(input) {
         console.log(Q);
     // Main algoritm
     } else {
-        let ans = -1, num = -1, cur = -1;
-
         // Set ans and num with more edge cases
         if (A[0] > P && ans < (A[0] - P)) {
             ans = A[0] - P;
