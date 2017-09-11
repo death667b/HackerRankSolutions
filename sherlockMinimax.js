@@ -27,16 +27,73 @@ const input4 = `4
 2 12`
 
 // bruteForceMethod(input4);
-alternate(input4);
+alternate(input3);
 
+function alternate(input) {
+    // Setup
+    let [N, A, P] = input.split('\n');
+    let test = [], foundM = 0, maxN = 0, testN = 0, num = 0;
+    N = parseInt(N);
+    A = A.split(' ').map( (a) => { return parseInt(a); });
+    A.sort( (a,b) => a-b);
+    [P, Q] = P.split(' ').map( (p) => { return parseInt(p); });
 
+    // Find edge cases and report if found
+    if(A[0] > Q) {
+        console.log(P);
+    } else if(A[N-1] < P) {
+        console.log(Q);
+    // Main algoritm
+    } else {
+        let ans = -1, num = -1, cur = -1;
+
+        // Set ans and num with more edge cases
+        if (A[0] > P && ans < (A[0] - P)) {
+            ans = A[0] - P;
+            num = P;
+        }
+
+        if (A[N-1] < Q && ans < (Q - A[N-1])) {
+            ans = Q - A[N-1];
+            num = Q;
+        }
+
+        // console.log('Array:', A);
+        // console.log('P:', P, ' Q', Q);
+        // console.log('Starting ans:', ans, 'Starting num:', num);
+        for (let i = 0; i < N-1; i++) {
+            cur = Math.floor((A[i] + A[i+1]) / 2);
+
+            if (cur <= Q && cur >= P && (cur - A[i]) > ans) {
+                ans = cur - A[i];
+                num = cur;
+            } else if (cur > Q && (Q - A[i]) > ans) {
+                ans = Q - A[i];
+                num = Q
+            } else if (cur < P && (A[i+1] - P) > ans) {
+                ans = A[i+1] - P;
+                num = P;
+            }
+            // console.log('i:',i,' A[i]:',A[i],' A[i+1]:',A[i+1],' ans:',ans,' num:',num,' cur:',cur)
+        }
+
+        console.log(num);
+    }
+} 
+
+// This method will calculate every possible solution.  
+// It will find the answer but very very slow
+// This is a O(N^2) problem
+// To calcuate the actual number of iterations (Q-P) * N
 function bruteForceMethod(input) {
+    // Setup
     let [N, A, P] = input.split('\n');
     let test = [], foundM = 0, maxN = 0, testN = 0, num = 0;
     N = parseInt(N);
     A = A.split(' ').map( (a) => { return parseInt(a); });
     [P, Q] = P.split(' ').map( (p) => { return parseInt(p); });
 
+    // Calcuate the answer
     for (let M = P; M <= Q; M++) {
         test = [];
         for (let i = 0; i < N; i++) {
@@ -57,62 +114,4 @@ function bruteForceMethod(input) {
 
     //console.log('maxN:', maxN, ' foundM:', foundM);
     console.log(foundM);
-} 
-
-function alternate(input) {
-    let [N, A, P] = input.split('\n');
-    let test = [], foundM = 0, maxN = 0, testN = 0, num = 0;
-    N = parseInt(N);
-    A = A.split(' ').map( (a) => { return parseInt(a); });
-    A.sort( (a,b) => a-b);
-    [P, Q] = P.split(' ').map( (p) => { return parseInt(p); });
-
-    if(A[0] > Q) {
-        console.log(P);
-    } else if(A[N-1] < P) {
-        console.log(Q);
-    } else {
-        let ans = -1;
-        let num = -1;
-        let cur = -1;
-
-        if (A[0] > P) {
-            if (ans < (A[0] - P)) {
-                ans = A[0] - P;
-                num = P;
-            }
-        }
-
-        if (A[N-1] < Q) {
-            if (ans < (Q - A[N-1])) {
-                ans = Q - A[N-1];
-                num = Q;
-            }
-        }
-
-        // console.log('Array:', A);
-        // console.log('P:', P, ' Q', Q);
-        // console.log('Starting ans:', ans, 'Starting num:', num);
-        for (let i = 0; i < N-1; i++) {
-            cur = Math.floor((A[i] + A[i+1]) / 2);
-
-            if (cur <= Q && cur >= P && (cur - A[i]) > ans) {
-                ans = cur - A[i];
-                num = cur;
-            } else if (cur > Q) {
-                if (Q - A[i] > ans) {
-                    ans = Q - A[i];
-                    num = Q
-                }
-            } else if (cur < P) {
-                if ((A[i+1] - P) > ans) {
-                    ans = A[i+1] - P;
-                    num = P;
-                }
-            }
-            // console.log('i:',i,' A[i]:',A[i],' A[i+1]:',A[i+1],' ans:',ans,' num:',num,' cur:',cur)
-        }
-
-        console.log(num);
-    }
 } 
