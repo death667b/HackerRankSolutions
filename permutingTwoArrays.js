@@ -1,3 +1,5 @@
+// https://www.hackerrank.com/challenges/two-arrays/problem
+
 const input1 = `2
 3 10
 2 1 3
