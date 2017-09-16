@@ -3,8 +3,13 @@
 const input1 = `7 50
 1 12 5 111 200 1000 10`;
 
-main(input1);
+const input2Json = require('./markAndToys-input2.json');
+
+main(input2Json);
 function main(input) {
+    if (typeof(input) === 'object') {
+        input = input.one + '\n' + input.two;
+    }
     let [deets, prices] = input.split('\n');
     let [N, K] = deets.split(' ').map( (num) => parseInt(num) );
     prices = prices.split(' ').map( (num) => parseInt(num) );
