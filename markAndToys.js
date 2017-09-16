@@ -19,17 +19,15 @@ function main(input) {
 
 function maximumToys(prices, k) {
     prices.sort( (a,b) => a-b );
+    let toys = 0, moneyLeft = k;
 
-    return findNumberToys(prices, k);
-}
-
-function findNumberToys(prices, k, toys = 0) {
-    let foundToys = 0;
-    if (prices.length > 0 && prices[0] < k) {
-        prices.shift();
-        foundToys = findNumberToys(prices, k, ++toys);
-    } else {
-        foundToys = toys;
+    for (let i = 0; i < prices.length; i++) {
+        if (prices[i] < moneyLeft) {
+            moneyLeft -= prices[i];
+            toys++;
+        } else {
+            break;
+        }
     }
-    return foundToys;
+    return toys;
 }
