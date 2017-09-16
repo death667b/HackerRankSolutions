@@ -9,10 +9,10 @@ function main(input) {
     let [N, K] = deets.split(' ').map( (num) => parseInt(num) );
     prices = prices.split(' ').map( (num) => parseInt(num) );
 
-    console.log(maxiumumToys(prices, K));
+    console.log(maximumToys(prices, K));
 }
 
-function maxiumumToys(prices, k) {
+function maximumToys(prices, k) {
     prices.sort( (a,b) => a-b );
 
     return findNumberToys(prices, k);
