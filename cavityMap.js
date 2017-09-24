@@ -1,8 +1,4 @@
-const input1 = `4
-1112
-1912
-1892
-1234`;
+const input1 = [ '1112', '1912', '1892', '1234'];
 // Expected output
 // 1112
 // 1X12
@@ -10,9 +6,8 @@ const input1 = `4
 // 1234
 
 cavityMap(input1);
-function cavityMap(input) {
-    let [n, ...theMap] = input.split('\n');
-    n = parseInt(n);
+function cavityMap(theMap) {
+    n = theMap.length;
     theMap = theMap
         .map( row => row.split('')
         .map( singles => parseInt(singles)
