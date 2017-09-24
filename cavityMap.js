@@ -32,5 +32,7 @@ function cavityMap(input) {
         }
     }
 
-    console.log(theMap)
+    theMap
+        .map( line => line.join(''))
+        .map( line => console.log(line))
 }
