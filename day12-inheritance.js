@@ -23,13 +23,25 @@ class Student extends Person {
     *   @param scores - An array of integers denoting the Person's test scores.
     */
     // Write your constructor here
+    constructor(firstName, lastName, id, scores) {
+        super(firstName, lastName, id);
+        this.scores = scores;
+    }
 
     /*	
     *   Method Name: calculate
     *   @return A character denoting the grade.
     */
     // Write your method here
-    
+    calculate() {
+        const avgScore = this.scores.reduce( (a,b) => a+b/2, 0);
+        if (avgScore >= 90) return 'O';
+        if (avgScore >= 80) return 'E';
+        if (avgScore >= 70) return 'A';
+        if (avgScore >= 55) return 'P';
+        if (avgScore >= 40) return 'D';
+        return 'T';
+    }
 }
 
 const input1 = `Heraldo Memelli 8135627
