@@ -26,44 +26,36 @@ const input2 = `5
 1
 1`;
 
+const input3 = `1
+27
+10
+3`
 
-processData(input2);
+// 78 85 92 99 106 113 120 127 134 141 148 155 162 169 176 183 190 197 204 211 
+// 218 225 232 239 246 253 260
+
+processData(input3);
 function processData(input) {
     let n, a, b, [T, ...x] = input.split('\n');
+    let displayNumber = new Set();
     
     for (let t = 0; t < T; t++) {
         [n, a, b, ...x] = x;
+        displayNumber.clear();
+        n = parseInt(n);
+        a = parseInt(a);
+        b = parseInt(b);
          
         let adder = Math.abs(b-a);
         let currentNumber = (a < b) ? --n*a : --n*b;
-        let displayNumber = '' + currentNumber.toString();
+        displayNumber.add(currentNumber.toString());
 
-        for (let x = 0; x < n; x++) {
+        for (let counter = 0; counter < n; counter++) {
             currentNumber += adder;
-            displayNumber += ' ' + currentNumber.toString();
+            displayNumber.add(currentNumber.toString());
         }
-        
-        console.log(displayNumber);
+
+        displayNumber.forEach( x => process.stdout.write(x.toString()+' '));
+        process.stdout.write('\n');
     }
-} 
-/*
-
-  5 10 100
-b-a = 100-10 = 90
-10*--n
-
-
-
-  0, 10, 20, 30, 40         40 +
-  0, 10, 20, 30, 130        90
-  0, 10, 20, 120, 130       0    
-  0, 10, 110, 120, 130      0
-  0, 100, 110, 120, 130     0
-  0, 100, 110, 120, 220     90
-  0, 100, 110, 210, 220     0
-  0, 100, 200, 210, 220     0
-  0, 100, 200, 210, 310     90
-  0, 100, 200, 300, 310     0
-  0, 100, 200, 300, 400     90
-
-  */
+}
