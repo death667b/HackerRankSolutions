@@ -34,7 +34,7 @@ class Student extends Person {
     */
     // Write your method here
     calculate() {
-        const avgScore = this.scores.reduce( (a,b) => a+b/2, 0);
+        const avgScore = this.scores.reduce( (a,b) => a+b, 0)/this.scores.length;
         if (avgScore >= 90) return 'O';
         if (avgScore >= 80) return 'E';
         if (avgScore >= 70) return 'A';
@@ -48,7 +48,14 @@ const input1 = `Heraldo Memelli 8135627
 2
 100 80`;
 
-runProgram(input1);
+// Name: Panza, Sancho
+// ID: 4847677
+// Grade: D
+const input2 = `Sancho Panza 4847677
+7
+41 42 43 44 45 46 48`;
+
+runProgram(input2);
 function runProgram(input) {
     let [firstLine, ...rest] = input.split('\n');
     let [firstName, lastName, id] = firstLine.split(' ');
