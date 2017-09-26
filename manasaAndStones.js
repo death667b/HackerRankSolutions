@@ -36,11 +36,11 @@ const input3 = `1
 
 processData(input3);
 function processData(input) {
-    let n, a, b, [T, ...x] = input.split('\n');
+    let n, a, b, [T, ...rest] = input.split('\n');
     let displayNumber = new Set();
     
     for (let t = 0; t < T; t++) {
-        [n, a, b, ...x] = x;
+        [n, a, b, ...rest] = rest;
         displayNumber.clear();
         n = parseInt(n);
         a = parseInt(a);
