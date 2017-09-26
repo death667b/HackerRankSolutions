@@ -9,16 +9,33 @@ const input1 = `2
 10
 100`;
 
+const input2 = `5
+958
+5
+7
+27
+10
+3
+521
+7
+3
+204
+8
+3
+316
+1
+1`;
 
-processData(input1);
+
+processData(input2);
 function processData(input) {
     let n, a, b, [T, ...x] = input.split('\n');
     
     for (let t = 0; t < T; t++) {
         [n, a, b, ...x] = x;
          
-        let adder = b-a;
-        let currentNumber = --n*a;
+        let adder = Math.abs(b-a);
+        let currentNumber = (a < b) ? --n*a : --n*b;
         let displayNumber = '' + currentNumber.toString();
 
         for (let x = 0; x < n; x++) {
