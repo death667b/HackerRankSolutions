@@ -13,7 +13,7 @@ function Node(data){
 
 function Solution(){
     this.insert=function(head,data){
-        //complete this methodx
+        //complete this method
         if (head === null) {
             return new Node(data);
         } else if (head.next === null) {
