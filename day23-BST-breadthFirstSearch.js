@@ -39,7 +39,19 @@ function BinarySearchTree() {
     };
 
     this.levelOrder = function(root) {
+        let queue = new Array();
+        if (root !== null) {
+            queue.push(root);
+            
+            while (queue.length > 0) {
+                let node = queue.shift();
+                process.stdout.write(node.data + " ");
 
+                if (node.left !== null) queue.push(node.left);
+                if (node.right !== null) queue.push(node.right);
+            }
+        }
+        process.stdout.write('\n');
     };
 };
 
