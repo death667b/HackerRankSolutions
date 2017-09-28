@@ -2,11 +2,26 @@ const input1 = `racecar`;
 // Expected Output - The word, racecar, is a palindrome.
 
 class Solution {
-    pushCharacter(char) {
-        
+    constructor() {
+        this.stack = new Array();
+        this.queue = new Array();
     }
 
-    
+    pushCharacter(char) {
+        this.stack.push(char);
+    }
+
+    popCharacter() {
+        return this.stack.pop();
+    }
+
+    enqueueCharacter(char) {
+        this.queue.push(char)
+    }
+
+    dequeueCharacter() {
+        return this.queue.shift();
+    }
 }
 
 mainProgran(input1);
