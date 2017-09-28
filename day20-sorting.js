@@ -10,7 +10,10 @@ const input2 = `3
 // First Element: 1
 // Last Element: 3
 
-bubbleSort(input1);
+const input3 = `20
+1023 10 4 9 2 6 33 5 44 63 9 12 98 102 103 101 1 123 502 0`
+
+bubbleSort(input3);
 function bubbleSort(input) {
     let [n, a] = input.split('\n');
     let totalSwaps = 0;
