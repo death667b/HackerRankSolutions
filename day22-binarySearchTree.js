@@ -40,7 +40,12 @@ function BinarySearchTree() {
     };
 
     this.getHeight = function(root) {
-        return root;
+        let leftNode = 0, rightNode = 0;
+        if (!root) return -1;
+        if (root.left) leftNode = 1 + this.getHeight(root.left);
+        if (root.right) rightNode = 1 + this.getHeight(root.right);
+
+        return Math.max(leftNode, rightNode);
     };
 };
 
